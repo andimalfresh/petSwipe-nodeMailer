@@ -3,10 +3,10 @@ const app = express()
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const nodemailer = require("nodemailer")
-const port = process.env.PORT
+const port = process.env.PORT || 3001
 
 
-app.listen(7777, ()=> console.log(`Headed down the high way, looking for adventure on port: ${port}.`))
+app.listen(port, ()=> console.log(`Headed down the high way, looking for adventure on port: ${port}.`))
 
 app.get("/", (req,res) => {
     res.send("YAAAAAS")
@@ -23,8 +23,8 @@ app.post("/send", (req,res) => {
     <h3>Contact Details</h3>
     <ul>
         <li>Name: ${req.body.name}</li>
-        <li>Pet Name: ${req.pet_name}</li>
-        <li>Location: ${req.location_city}</li>
+        <li>Pet Name: ${req.body.pet_name}</li>
+        <li>Location: ${req.body.location_city}</li>
         <li>Email: ${req.body.email}</li>
         <li>Phone: ${req.body.phone}</li>
     </ul>
@@ -46,7 +46,7 @@ app.post("/send", (req,res) => {
         // setup email data with unicode symbols
         let mailOptions = {
             from: '"PetSwipe App" <petswipe@gmail.com>', // sender address
-            to: 'petswipe@gmail.com', // list of receivers
+            to: 'w.andrew.pedersen@gmail.com', // list of receivers
             subject: 'Someone is Interested in your pet !!', // Subject line
             text: 'Hello world?', // plain text body
             html: output // html body
