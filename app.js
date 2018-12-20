@@ -3,7 +3,7 @@ const app = express()
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const nodemailer = require("nodemailer")
-const port = 7777 || process.env.PORT
+const port = process.env.PORT
 
 
 app.listen(7777, ()=> console.log(`Headed down the high way, looking for adventure on port: ${port}.`))
